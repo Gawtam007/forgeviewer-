@@ -43,7 +43,7 @@ router.get('/buckets', async (req, res, next) => {
             // Retrieve up to 100 buckets from Forge using the [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#getBuckets)
             // Note: if there's more buckets, you should call the getBucket method in a loop, providing different 'startAt' params
             const buckets = await new BucketsApi().getBuckets({ limit: 100 }, req.oauth_client, req.oauth_token);
-            console.log("&&&&&");
+            //console.log("********************************************************");
             res.json(buckets.body.items.map((bucket) => {
                 return {
                     id: bucket.bucketKey,
@@ -82,6 +82,7 @@ router.post('/buckets', async (req, res, next) => {
     payload.bucketKey = config.credentials.client_id.toLowerCase() + '-' + req.body.bucketKey;
     payload.policyKey = 'transient'; // expires in 24h
     try {
+        console.log("***********************************[********************");
         // Create a bucket using [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#createBucket).
         await new BucketsApi().createBucket(payload, {}, req.oauth_client, req.oauth_token);
         res.status(200).end();
@@ -101,6 +102,7 @@ router.post('/objects', multer({ dest: 'uploads/' }).single('fileToUpload'), asy
         try {
             // Upload an object to bucket using [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#uploadObject).
             await new ObjectsApi().uploadObject(req.body.bucketKey, req.file.originalname, data.length, data, {}, req.oauth_client, req.oauth_token);
+            console.log("********************************************************");
             res.status(200).end();
         } catch(err) {
             next(err);
