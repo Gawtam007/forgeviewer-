@@ -40,6 +40,7 @@ router.get('/buckets', async (req, res, next) => {
     const bucket_name = req.query.id;
     if (!bucket_name || bucket_name === '#') {
         try {
+            System.out.print(" #####::::" );
             // Retrieve up to 100 buckets from Forge using the [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#getBuckets)
             // Note: if there's more buckets, you should call the getBucket method in a loop, providing different 'startAt' params
             const buckets = await new BucketsApi().getBuckets({ limit: 100 }, req.oauth_client, req.oauth_token);
@@ -57,6 +58,7 @@ router.get('/buckets', async (req, res, next) => {
         }
     } else {
         try {
+            System.out.print(" ####::::" );
             // Retrieve up to 100 objects from Forge using the [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#getObjects)
             // Note: if there's more objects in the bucket, you should call the getObjects method in a loop, providing different 'startAt' params
             const objects = await new ObjectsApi().getObjects(bucket_name, { limit: 100 }, req.oauth_client, req.oauth_token);
@@ -81,6 +83,7 @@ router.post('/buckets', async (req, res, next) => {
     payload.bucketKey = config.credentials.client_id.toLowerCase() + '-' + req.body.bucketKey;
     payload.policyKey = 'transient'; // expires in 24h
     try {
+        System.out.print(" ###::::" );
         // Create a bucket using [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#createBucket).
         await new BucketsApi().createBucket(payload, {}, req.oauth_client, req.oauth_token);
         res.status(200).end();
@@ -98,6 +101,7 @@ router.post('/objects', multer({ dest: 'uploads/' }).single('fileToUpload'), asy
             next(err);
         }
         try {
+            System.out.print(" ##::::" );
             // Upload an object to bucket using [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#uploadObject).
             await new ObjectsApi().uploadObject(req.body.bucketKey, req.file.originalname, data.length, data, {}, req.oauth_client, req.oauth_token);
             res.status(200).end();
