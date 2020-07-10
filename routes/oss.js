@@ -43,11 +43,12 @@ router.get('/buckets', async (req, res, next) => {
             // Retrieve up to 100 buckets from Forge using the [BucketsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/BucketsApi.md#getBuckets)
             // Note: if there's more buckets, you should call the getBucket method in a loop, providing different 'startAt' params
             const buckets = await new BucketsApi().getBuckets({ limit: 100 }, req.oauth_client, req.oauth_token);
+            console.log("&&&&&");
             res.json(buckets.body.items.map((bucket) => {
                 return {
                     id: bucket.bucketKey,
                     // Remove bucket key prefix that was added during bucket creation
-                    text: bucket.bucketKey.replace(config.credentials.client_id.toLowerCase() + '-22222', ''),
+                    text: bucket.bucketKey.replace(config.credentials.client_id.toLowerCase() + '-', ''),
                     type: 'bucket',
                     children: true
                 };
