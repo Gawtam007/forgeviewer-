@@ -44,7 +44,6 @@ function onDocumentLoadFailure(viewerErrorCode) {
 }
 
 function getForgeToken(callback) {
-  System.out.print("@@@@@");
   fetch('/api/forge/oauth/token').then(res => {
     res.json().then(data => {
       callback(data.access_token, data.expires_in);
