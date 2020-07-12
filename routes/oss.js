@@ -48,6 +48,7 @@ router.get('/buckets', async (req, res, next) => {
                     id: bucket.bucketKey,
                     // Remove bucket key prefix that was added during bucket creation
                     text: bucket.bucketKey.replace(config.credentials.client_id.toLowerCase() + '-', ''),
+                    console.log("****bucket.bucketkey*****" + id );
                     type: 'bucket',
                     children: true
                 };
@@ -64,6 +65,7 @@ router.get('/buckets', async (req, res, next) => {
                 return {
                     id: Buffer.from(object.objectId).toString('base64'),
                     text: object.objectKey,
+                    console.log(" *****object.objectkey*********** " +text);
                     type: 'object',
                     children: false
                 };
