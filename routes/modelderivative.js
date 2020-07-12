@@ -43,6 +43,7 @@ router.post('/jobs', async (req, res, next) => {
     let job = new JobPayload();
     job.input = new JobPayloadInput();
     job.input.urn = req.body.objectName;
+    console.log("******URN******" + job.input.urn); 
     job.output = new JobPayloadOutput([
         new JobSvfOutputPayload()
     ]);
