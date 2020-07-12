@@ -26,6 +26,7 @@ let router = express.Router();
 router.get('/token', async (req, res, next) => {
     try {
         const token = await getPublicToken();
+        console.log("*************token******" + token );
         res.json({
             access_token: token.access_token,
             expires_in: token.expires_in    
