@@ -32,7 +32,7 @@ router.get('/token', async (req, res, next) => {
             expires_in: token.expires_in    
 
         });
-    console.log("*************token******" + access_token + "******" + expires_in);
+   // console.log("*************token******" + access_token + "******" + expires_in);
 
     } catch(err) {
         next(err);
