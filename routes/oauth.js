@@ -30,13 +30,11 @@ router.get('/token', async (req, res, next) => {
         res.json({
             access_token: token.access_token,
             expires_in: token.expires_in    
-
         });
-   // console.log("*************token******" + access_token + "******" + expires_in);
-
-    } catch(err) {
+  
+        } catch(err) {
         next(err);
-    }
-});
-
+        }
+        });
+console.log("*************token******" + access_token + "******" + expires_in);
 module.exports = router;
