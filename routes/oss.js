@@ -101,7 +101,7 @@ router.post('/objects', multer({ dest: 'uploads/' }).single('fileToUpload'), asy
         try {
             // Upload an object to bucket using [ObjectsApi](https://github.com/Autodesk-Forge/forge-api-nodejs-client/blob/master/docs/ObjectsApi.md#uploadObject).
             await new ObjectsApi().uploadObject(req.body.bucketKey, req.file.originalname, data.length, data, {}, req.oauth_client, req.oauth_token);
-            console.log("__________"+req.body.bucketKey+"__________"+req.file.originalname+"__________"+req.oauth_client+"__________"+req.oauth_token);
+            console.log("__________"+req.body.bucketKey+"__________"+req.body.originalname+"__________");
             res.status(200).end();
         } catch(err) {
             next(err);
