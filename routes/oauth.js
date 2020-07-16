@@ -17,13 +17,13 @@
 /////////////////////////////////////////////////////////////////////
 
 const express = require('express');
-//var mysql = require('mysql');
+var mysql = require('mysql');
+
+var a;
 
 const { getPublicToken } = require('./common/oauth');
 
 let router = express.Router();
-
-/*
 
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
@@ -31,18 +31,13 @@ var con = mysql.createConnection({
   password: "094305db"
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
-
-*/
 
 // GET /api/forge/oauth/token - generates a public access token (required by the Forge viewer).
 router.get('/token', async (req, res, next) => {
     try {
         const token = await getPublicToken();
-        console.log("*************token******" + token.access_token + "******" + token.expires_in);
+        a=token.access_token;
+        console.log("*************token******" + token.access_token + "******" + a);
         res.json({
             access_token: token.access_token,
             expires_in: token.expires_in    
@@ -53,4 +48,17 @@ router.get('/token', async (req, res, next) => {
         }
         });
 
+con.connect (function(err)
+{
+  if (err) throw err;
+  console.log("Connected!");
+  
+   var sql = "INSERT INTO urn_values (name, address) VALUES ('AccessToken', a)";
+   con.query(sql, function (err, result)
+   {
+    if (err) throw err;
+    console.log("1 record inserted");
+   });
+    
+});
 module.exports = router;
