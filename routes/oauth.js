@@ -17,12 +17,11 @@
 /////////////////////////////////////////////////////////////////////
 
 const express = require('express');
+var mysql = require('mysql');
 
 const { getPublicToken } = require('./common/oauth');
 
 let router = express.Router();
-
-var mysql = require('mysql');
 
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
