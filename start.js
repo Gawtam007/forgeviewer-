@@ -47,20 +47,25 @@ var con = mysql.createConnection({
   database: "heroku_dafec4799bd7c87"
 });
 
-con.connect(function(err) {
+con.connect (function(err)
+{
   if (err) throw err;
   console.log("Connected!");
     
   var sql = "CREATE TABLE urn_values (name VARCHAR(255), address VARCHAR(255))";
-  con.query(sql, function (err, result) {
+  con.query(sql, function (err, result)
+  {
     if (err) throw err;
     console.log("Table created");
   }
     
    var sql = "INSERT INTO urn_values (name, address) VALUES ('Gawtam', 'HELLO')";
-   con.query(sql, function (err, result) {
+   con.query(sql, function (err, result)
+   {
     if (err) throw err;
     console.log("1 record inserted");
+   }
+    
 });
 
 
