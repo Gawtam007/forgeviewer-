@@ -17,6 +17,8 @@
 /////////////////////////////////////////////////////////////////////
 
 var viewer;
+/*
+
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -30,11 +32,7 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
+*/
 
 function launchViewer(urn) {
   var options = {
