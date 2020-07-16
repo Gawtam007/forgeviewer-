@@ -37,7 +37,7 @@ var con = mysql.createConnection({
 router.get('/token', async (req, res, next) => {
     try {
         const token = await getPublicToken();
-        var a=token.access_token;
+        var acccess=token.access_token;
         console.log("*************token******" + token.access_token + "#######" + acccess);
         res.json({
             access_token: token.access_token,
