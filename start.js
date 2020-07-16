@@ -18,6 +18,7 @@
 
 const path = require('path');
 const express = require('express');
+var mysql = require('mysql');
 
 const PORT = process.env.PORT || 3000;
 const config = require('./config');
@@ -37,3 +38,14 @@ app.use((err, req, res, next) => {
     res.status(err.statusCode).json(err);
 });
 app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`); });
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "yourusername",
+  password: "yourpassword"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
