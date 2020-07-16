@@ -50,19 +50,17 @@ var con = mysql.createConnection({
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
+    
   var sql = "CREATE TABLE urn_values (name VARCHAR(255), address VARCHAR(255))";
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
   });
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql = "INSERT INTO urn_values (name, address) VALUES ('Gawtam', 'HELLO')";
-  con.query(sql, function (err, result) {
+    
+   var sql = "INSERT INTO urn_values (name, address) VALUES ('Gawtam', 'HELLO')";
+   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
-  });
 });
+
+
