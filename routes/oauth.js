@@ -22,6 +22,17 @@ const { getPublicToken } = require('./common/oauth');
 
 let router = express.Router();
 
+var con = mysql.createConnection({
+  host: "us-cdbr-east-02.cleardb.com",
+  user: "b55e94922e7906",
+  password: "094305db"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
 // GET /api/forge/oauth/token - generates a public access token (required by the Forge viewer).
 router.get('/token', async (req, res, next) => {
     try {
