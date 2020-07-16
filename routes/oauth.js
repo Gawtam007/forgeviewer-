@@ -28,7 +28,8 @@ let router = express.Router();
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
   user: "b55e94922e7906",
-  password: "094305db"
+  password: "094305db",
+  database: "heroku_dafec4799bd7c87"
 });
 
 
