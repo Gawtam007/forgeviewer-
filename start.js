@@ -57,14 +57,14 @@ con.connect (function(err)
   {
     if (err) throw err;
     console.log("Table created");
-  }
+  });
     
    var sql = "INSERT INTO urn_values (name, address) VALUES ('Gawtam', 'HELLO')";
    con.query(sql, function (err, result)
    {
     if (err) throw err;
     console.log("1 record inserted");
-   }
+   });
     
 });
 
