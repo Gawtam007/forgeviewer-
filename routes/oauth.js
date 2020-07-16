@@ -22,6 +22,8 @@ const { getPublicToken } = require('./common/oauth');
 
 let router = express.Router();
 
+var mysql = require('mysql');
+
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
   user: "b55e94922e7906",
