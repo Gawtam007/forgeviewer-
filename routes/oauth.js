@@ -49,7 +49,7 @@ router.get('/token', async (req, res, next) => {
         }
         });
 
-con.connect (function(err)
+/*con.connect (function(err)
 {
   if (err) throw err;
   console.log("Connected!");
@@ -61,5 +61,5 @@ con.connect (function(err)
     console.log("1 record inserted");
    });
     
-});
+});*/
 module.exports = router;
