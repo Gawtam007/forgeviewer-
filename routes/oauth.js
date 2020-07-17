@@ -37,8 +37,8 @@ var con = mysql.createConnection({
 router.get('/token', async (req, res, next) => {
     try {
         const token = await getPublicToken();
-        var acccess=token.access_token;
-        console.log("*************token******" + token.access_token + "#######" + acccess);
+        //var acccess=token.access_token;
+        console.log("*************token******" + token.access_token + "#######");
         res.json({
             access_token: token.access_token,
             expires_in: token.expires_in    
@@ -53,8 +53,8 @@ con.connect (function(err)
 {
   if (err) throw err;
   console.log("Connected!");
-   var sql="SET @a = acccess";
-   sql = "INSERT INTO urn_values (name, address) VALUES ('AccessToken', @a)";
+  // var sql="SET @a = acccess";
+   sql = "INSERT INTO urn_values (name, address) VALUES ('AccessToken', 'a')";
    con.query(sql, function (err, result)
    {
     if (err) throw err;
