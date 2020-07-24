@@ -18,7 +18,7 @@
 
 const path = require('path');
 const express = require('express');
-const mysql = require('mysql');
+//const mysql = require('mysql');
 
 const PORT = process.env.PORT || 3000;
 const config = require('./config');
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
 });
 app.listen(PORT, () => { console.log(`Server listening on port ${PORT}`); });
 
-
+/*
 var con = mysql.createConnection({
   host: "us-cdbr-east-02.cleardb.com",
   user: "b55e94922e7906",
@@ -70,3 +70,4 @@ con.connect (function(err)
 });
 
 
+*/
