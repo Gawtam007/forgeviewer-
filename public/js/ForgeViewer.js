@@ -44,7 +44,7 @@ function launchViewer(urn) {
     viewer = new Autodesk.Viewing.GuiViewer3D(document.getElementById('forgeViewer'));
     viewer.start();
     var documentId = 'urn:' + urn;
-    console.log("******URN***" + urn);
+    //console.log("******URN***" + urn);
     Autodesk.Viewing.Document.load(documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
   });
 }
